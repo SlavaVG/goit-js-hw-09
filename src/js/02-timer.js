@@ -2,7 +2,8 @@
 import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
-import Notiflix from 'notiflix'
+// all modules
+import Notiflix from 'notiflix';
 
 
 
@@ -30,28 +31,22 @@ flatpickr("#datetime-picker",{
     Notiflix.Notify.warning('Please choose a date in the future')
         }
         let timeLeft = selectedDates[0].getTime()
-      
- 
         if (selectedDates[0] > date) {
             button.removeAttribute('disabled', true)
             function onBtnClick() {
-             timerId = setInterval(() => {
-                       const { days, hours, minutes, seconds } =   convertMs(timeLeft - Date.now()) 
+            timerId = setInterval(() => {
+                        const { days, hours, minutes, seconds } =   convertMs(timeLeft - Date.now()) 
                         valueDays.textContent = days
                         valueHours.textContent = hours
                         valueMinutes.textContent = minutes
                         valueSeconds.textContent = seconds
-                 if (Number(valueDays.textContent) === 0 && Number(valueHours.textContent) === 0 && Number(valueMinutes.textContent) === 0 && Number(valueSeconds.textContent) === 0) {
-                        clearInterval(timerId)
-                                     }
-                        
+                if (Number(valueDays.textContent) === 0 && Number(valueHours.textContent) === 0 && Number(valueMinutes.textContent) === 0 && Number(valueSeconds.textContent) === 0) {
+                        clearInterval(timerId)}
                     }, 1000) 
                 }
-        
- button.addEventListener('click', onBtnClick)
+button.addEventListener('click', onBtnClick)
   }
- 
-      },
+},
 })
 
 
